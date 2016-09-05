@@ -125,8 +125,14 @@ public class GeoCountDownTimer {
             }
             return true;
         }
-
         return false;
+    }
+    public void setLeapYear()
+    {
+        if(isLeapYear(this.years))
+            dayValues[2] = 29;
+        else
+            dayValues[2] = 28;
     }
 
     public boolean isDayValid(int pMonth, int pDay, int pYear)
@@ -159,7 +165,7 @@ public class GeoCountDownTimer {
 
     public void dec()
     {
-
+        setLeapYear();
         if( this.days == 1)
         {
             if(this.months==1)
@@ -183,10 +189,7 @@ public class GeoCountDownTimer {
 
     public void inc()
     {
-        if(isLeapYear(this.years))
-            dayValues[2] = 29;
-        else
-            dayValues[2] = 28;
+        setLeapYear();
         if( this.days == dayValues[this.months])
         {
             this.setDays(1);

@@ -34,6 +34,8 @@ public class Test {
         j1.inc(365);
         System.out.println (j1);
         System.out.println (j1.toDateString().equals("5/9/2016"));
+        j1.dec(365);
+        System.out.println(j1.toDateString().equals("5/10/2015"));
 
     }
 }
