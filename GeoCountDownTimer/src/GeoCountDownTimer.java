@@ -1,3 +1,6 @@
+import java.io.*;
+import java.util.Scanner;
+
 /**
  * Created by Phil on 8/31/16.
  */
@@ -20,8 +23,8 @@ public class GeoCountDownTimer {
 
     public GeoCountDownTimer(int month, int day, int year)
     {
-        this.setDate(month,day,year);
 
+        this.setDate(month,day,year);
     }
 
     public GeoCountDownTimer(String geoDate)
@@ -32,7 +35,7 @@ public class GeoCountDownTimer {
         if(s.length==3)
             this.setDate(Integer.parseInt(s[0]),Integer.parseInt(s[1]),Integer.parseInt(s[2]));
         else
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Use Format mm/dd/yyyy");
     }
 
     public GeoCountDownTimer(GeoCountDownTimer geoDate)
@@ -57,7 +60,7 @@ public class GeoCountDownTimer {
                 return false;
         }
 
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("Not a valid type");
     }
 
     public int compareTo(GeoCountDownTimer other)
@@ -111,7 +114,11 @@ public class GeoCountDownTimer {
             setDays(d);
         }
         else
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(m+"/"+d+"/"+y+" is not a valid date");
+    }
+    public void setDate(GeoCountDownTimer temp)
+    {
+        this.setDate(temp.getMonths(),temp.getDays(),temp.getYears());
     }
     public boolean isLeapYear(int y)
     {
@@ -158,7 +165,7 @@ public class GeoCountDownTimer {
 
     public boolean isYearValid(int pYear)
     {
-        if(pYear > 2014)
+        if(pYear > 2013)
             return true;
         return false;
     }
@@ -213,5 +220,49 @@ public class GeoCountDownTimer {
     {
 
         return this.months + "/" + this.days + "/" + this.years;
+    }
+
+    public void load(String filename)
+    {
+        try{
+            Scanner fileReader = new Scanner(new File(filename));
+            String logline = fileReader.nextLine();
+            System.out.println(logline);
+            GeoCountDownTimer temp = new GeoCountDownTimer(logline);
+            this.setDate(temp);
+        }
+        catch (Exception error){
+            System.out.println("File not found..");
+        }
+    }
+
+
+
+    public void save(String filename)
+    {
+        try {
+            PrintWriter writer = new PrintWriter(filename);
+            writer.println(this.toDateString());
+            writer.close();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public int daysToGo(String fromDate)
+    {
+        GeoCountDownTimer past = new GeoCountDownTimer(fromDate);
+        if(this.compareTo(past)==-1)
+            throw new IllegalArgumentException("Date is in the future");
+        else {
+            GeoCountDownTimer now = new GeoCountDownTimer(this);
+            int counter = 0;
+            while (now.compareTo(past) > 0) {
+                now.dec();
+                counter++;
+            }
+            return counter;
+        }
     }
 }

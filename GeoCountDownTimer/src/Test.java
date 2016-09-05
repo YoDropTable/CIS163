@@ -37,5 +37,13 @@ public class Test {
         j1.dec(365);
         System.out.println(j1.toDateString().equals("5/10/2015"));
 
+        String output = "";
+        GeoCountDownTimer test = new GeoCountDownTimer("5/20/2015");
+        GeoCountDownTimer test2 = new GeoCountDownTimer("1/1/2016");
+        output += test.daysToGo("5/3/2014");
+        System.out.println("Outpt: " + output);
+        //test.save("Output.txt");
+        test2.load("Output.txt");
+        System.out.println(test2);
     }
 }

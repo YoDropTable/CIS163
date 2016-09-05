@@ -102,28 +102,28 @@ public class TestGeoCountDownTimer {
 
     }
 
-//    @Test
-//    public void testLoadSave () {
-//        GeoCountDownTimer s1 = new GeoCountDownTimer (5,9,2015);
-//        GeoCountDownTimer s2 = new GeoCountDownTimer (5,9,2015);
-//
-//        s1.save("file1");
-//        s1 = new GeoCountDownTimer (1,1,2014);  // resets to zero
-//        s1.load("file1");
-//        assertTrue (s2.equals(s1));
-//
-//    }
-//
-//    @Test
-//    public void testDaysToGo () {
-//        GeoCountDownTimer s1 = new GeoCountDownTimer (2,9,2015);
-//        assertTrue (s1.daysToGo("2/1/2015") == 8);
-//        assertTrue (s1.daysToGo("2/8/2015") == 1);
-//        assertTrue (s1.daysToGo("2/9/2015") == 0);
-//
-//        s1 = new GeoCountDownTimer (2,9,5015);
-//        System.out.println (s1.daysToGo("2/9/2015"));
-//    }
+    @Test
+    public void testLoadSave () {
+        GeoCountDownTimer s1 = new GeoCountDownTimer (5,9,2015);
+        GeoCountDownTimer s2 = new GeoCountDownTimer (5,9,2015);
+
+        s1.save("file1");
+        s1 = new GeoCountDownTimer (1,1,2014);  // resets to zero
+        s1.load("file1");
+        assertTrue (s2.equals(s1));
+
+    }
+
+    @Test
+    public void testDaysToGo () {
+        GeoCountDownTimer s1 = new GeoCountDownTimer (2,9,2015);
+        assertTrue (s1.daysToGo("2/1/2015") == 8);
+        assertTrue (s1.daysToGo("2/8/2015") == 1);
+        assertTrue (s1.daysToGo("2/9/2015") == 0);
+
+        s1 = new GeoCountDownTimer (2,9,5015);
+        System.out.println (s1.daysToGo("2/9/2015"));
+    }
 
 
 }
