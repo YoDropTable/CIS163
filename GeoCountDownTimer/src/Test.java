@@ -1,4 +1,7 @@
 import java.*;
+
+import static org.junit.Assert.assertTrue;
+
 /**
  * Created by Phil on 8/31/16.
  */
@@ -27,6 +30,10 @@ public class Test {
         for (int i = 0; i < (366 + 365+ 365 + 365); i++)
             s2.inc();
         System.out.println("Date: " + s2);
+        GeoCountDownTimer j1 = new GeoCountDownTimer (5,10,2015);
+        j1.inc(365);
+        System.out.println (j1);
+        System.out.println (j1.toDateString().equals("5/9/2016"));
 
     }
 }
