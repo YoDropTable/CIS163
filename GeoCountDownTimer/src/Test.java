@@ -45,5 +45,10 @@ public class Test {
         //test.save("Output.txt");
         test2.load("Output.txt");
         System.out.println(test2);
+
+        GeoCountDownTimer daysToGo = new GeoCountDownTimer("2/9/2016");
+        System.out.println("Days to go from " + daysToGo + " : " + daysToGo.daysToGo("2/28/2015"));
+        System.out.println(daysToGo.isDayValid(2,0,2017));
+
     }
 }
