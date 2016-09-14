@@ -18,7 +18,7 @@ public class GeoCountDownTimer {
 
     /** The number of days for a given date */
     private int days;
-
+    
     /** Stores days in each month. starts at 1 for clarity */
     private int[] dayValues = { 0,31, 28, 31, 30, 31, 30, 31,
                                     31, 30, 31, 30, 31 };
